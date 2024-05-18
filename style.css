@@ -5,3 +5,128 @@
   margin: 0;
   padding: 0;
 }
+
+.container {
+  max-width: 450px;
+  margin: 100px auto;
+  padding: 0 15px;
+}
+
+.card {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.box {
+  box-shadow: 0 7px 10px rgba(0, 0, 0, 0.3);
+  width: 50%;
+  border-radius: 33px 33px 33px 33px;
+  margin: 0 auto;
+  height: 370px;
+  padding: 50px;
+  margin-bottom: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: #111;
+}
+
+label,
+input,
+button {
+  display: block;
+  width: 100%;
+  height: 30px;
+}
+
+button {
+  border-radius: 10px 10px 10px 10px;
+  background-color: #411ce6;
+  padding: 10px;
+  width: 50%;
+  color: white;
+  height: 40px;
+}
+
+/* Correction */
+
+form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px 30px 40px;
+  border-radius: 25px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+h1 {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #111;
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+
+label {
+  margin: 5px;
+  font-size: 16px;
+  color: #111;
+  font-weight: 600;
+  text-align: center;
+}
+
+input {
+  margin-bottom: 20px;
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 5px solid #2222224f;
+  resize: none;
+  cursor: pointer;
+}
+
+input:focus {
+  outline: 1px solid #2222224f;
+}
+
+button {
+  margin-top: 10px;
+  min-width: 350px;
+  padding: 10px 6px;
+  border: 1px solid #2222224f;
+  cursor: pointer;
+  border-radius: 5px;
+  color: #f1f1f1;
+  font-size: 14px;
+  font-weight: 600;
+  background-color: #3824f1;
+}
+
+.result {
+  font-size: 20px;
+  margin-top: 30px;
+  text-align: center;
+}
+
+.comment {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 20px;
+}
+
+@media screen and (max-width: 400px) {
+  form {
+    width: 100%;
+  }
+  form button {
+    min-width: 260px;
+    height: 60px;
+  }
+}
