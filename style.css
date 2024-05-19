@@ -8,7 +8,7 @@
 
 .container {
   max-width: 450px;
-  margin: 100px auto;
+  margin: 20px auto;
   padding: 0 15px;
 }
 
@@ -66,12 +66,12 @@ form {
 h1 {
   text-align: center;
   font-size: 24px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   color: #111;
 }
 
 h2 {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 label {
@@ -111,7 +111,7 @@ button {
 
 .result {
   font-size: 20px;
-  margin-top: 30px;
+  margin-top: 10px;
   text-align: center;
 }
 
