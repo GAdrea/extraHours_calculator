@@ -7,14 +7,28 @@ const workingHours = document.querySelector(".working-hours");
 const result = document.querySelector(".result");
 const comment = document.querySelector(".comment");
 
-// hoursForm.addEventListener("submit", getTotalWorkingTime);
+/**
+ * Fonction qui calcule le temps de travail total en heures.
+ */
+function calculateTotalWorkingHours() {
+  // on récupère le temps de début de travail
+  const startTime = startingTime.value;
+  // on récupère le temps de fin de travail réel
+  const actualEndTime = actualEndingTime.value;
+  // on convertit le temps de début de travail en minutes
+  const startTimeInMinutes = convertToMinutes(startTime);
+  // on convertit le temps de fin de travail réel en minutes
+  const actualEndTimeInMinutes = convertToMinutes(actualEndTime);
+  // on calcule la durée totale de travail en minutes
+  const totalWorkingMinutes = actualEndTimeInMinutes - startTimeInMinutes;
+  // on convertit les minutes en heures
+  const totalWorkingHours = totalWorkingMinutes / 60;
+  // on affiche le résultat dans l'élément HTML approprié
 
-// function getTotalWorkingTime(event) {
-//   event.preventDefault();
-//   const startTime = startingTime.value;
-//   const differenceInHours = actualEndingTime.value - startingTime.value;
-//   workingHours.textContent = `Tu as bossé pendant ${differenceInHours} heures.`;
-// }
+  workingHours.textContent = `Tu as travaillé ${totalWorkingHours.toFixed(
+    2
+  )}heures aujourd'hui.`;
+}
 
 /**
  * Fonction qui prend un string au format "HH:MM" et le convertit en minutes.
