@@ -64,34 +64,30 @@ function getExtraHoursinMinutes(event) {
   // on affiche le résultat
   result.textContent = `T'as fait ${differenceInMinutes} minutes d'heures supplémentaires. /  残業${differenceInMinutes}分  `;
   // si la différence est négative, on affiche un message d'erreur
-  if (differenceInMinutes < 0) {
-    setTimeout(() => {
+
+  setTimeout(() => {
+    if (differenceInMinutes < 0) {
       comment.textContent = `Tu te fous de moi ?! / ふざけんな！  `;
-    }, 2000);
-  } else if (differenceInMinutes <= 30) {
-    // si la différence est inférieure ou égale à 30 minutes, on affiche un message de chance
-    setTimeout(() => {
+    } else if (differenceInMinutes <= 30) {
+      // si la différence est inférieure ou égale à 30 minutes, on affiche un message de chance
+
       comment.textContent = `T'as eu de la chance ! / ラッキーじゃないか！`;
-    }, 2000);
-  } else if (differenceInMinutes <= 60) {
-    // si la différence est inférieure ou égale à 1 heure, on affiche un message de routine
-    setTimeout(() => {
+    } else if (differenceInMinutes <= 60) {
+      // si la différence est inférieure ou égale à 1 heure, on affiche un message de routine
+
       comment.textContent = `Comme d'habitude hein? /  相変わらずだね `;
-    }, 2000);
-  } else if (differenceInMinutes <= 90) {
-    // si la différence est inférieure ou égale à 1 heure et demi, on affiche un message de fatigue
-    setTimeout(() => {
-      comment.textContent = `Faudrait p'tet LEVER le pied ! /  やりすぎじゃない？ `;
-    }, 2000);
-  } else if (differenceInMinutes <= 120) {
-    // si la différence est inférieure ou égale à 2 heures, on affiche un message de suffisance
-    setTimeout(() => {
+    } else if (differenceInMinutes <= 90) {
+      // si la différence est inférieure ou égale à 1 heure et demi, on affiche un message de fatigue
+
+      comment.textContent = `Faudrait p'tet lever le pied ! /  やりすぎじゃない？ `;
+    } else if (differenceInMinutes <= 120) {
+      // si la différence est inférieure ou égale à 2 heures, on affiche un message de suffisance
+
       comment.textContent = `Bon ça suffit maintenant ! / いい加減にしろ！ `;
-    }, 2000);
-  } else {
-    // sinon, on affiche un message d'exasperation
-    setTimeout(() => {
+    } else {
+      // sinon, on affiche un message d'exasperation
+
       comment.textContent = `Mais merde! Va dormir!! /  はやく寝ろ！クソバカやろう！！ `;
-    }, 2000);
-  }
+    }
+  }, 2000);
 }
