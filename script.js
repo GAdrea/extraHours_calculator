@@ -7,10 +7,17 @@ const workingHours = document.querySelector(".working-hours");
 const result = document.querySelector(".result");
 const comment = document.querySelector(".comment");
 
+hoursForm.addEventListener("submit", function (event) {
+  event.preventDefault();
+  calculateTotalWorkingHours();
+  getExtraHoursinMinutes();
+});
+
 /**
  * Fonction qui calcule le temps de travail total en heures.
  */
 function calculateTotalWorkingHours() {
+  console.log("calculateTotalWorkingHours");
   // on récupère le temps de début de travail
   const startTime = startingTime.value;
   // on récupère le temps de fin de travail réel
@@ -27,7 +34,7 @@ function calculateTotalWorkingHours() {
 
   workingHours.textContent = `Tu as travaillé ${totalWorkingHours.toFixed(
     2
-  )}heures aujourd'hui.`;
+  )} heures aujourd'hui.`;
 }
 
 /**
@@ -45,8 +52,6 @@ function convertToMinutes(time) {
   // on renvoie le résultat
   return hoursInMinutes + minutesInMinutes;
 }
-
-hoursForm.addEventListener("submit", getExtraHoursinMinutes);
 
 function getExtraHoursinMinutes(event) {
   // on empêche le comportement par défaut du formulaire
@@ -91,3 +96,25 @@ function getExtraHoursinMinutes(event) {
     }
   }, 2000);
 }
+
+
+// Á analyser
+// function calculateTotalWorkingHours() {
+//   return new Promise((resolve, reject) => {
+//     // Logique de la fonction
+//     resolve();
+//   });
+// }
+
+// function handleFormSubmit(event) {
+//   event.preventDefault();
+//   calculateTotalWorkingHours()
+//     .then(() => {
+//       getExtraHoursinMinutes();
+//     })
+//     .catch(error => {
+//       console.error("Une erreur est survenue", error);
+//     });
+// }
+
+// hoursForm.addEventListener("submit", handleFormSubmit);
