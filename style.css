@@ -5,12 +5,20 @@
   margin: 0;
   padding: 0;
 }
+
+@keyframes gradientAnimation {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
 body {
-  background: linear-gradient(
-    to right,
-    #56ccf2,
-    #2f80ed
-  ); /* Dégradé de bleu du clair au foncé */
+  background: linear-gradient(to right, #e0e0e0, #757575);
+  background-size: 200% 200%; /* Agrandir le dégradé pour permettre l'animation */
+  animation: gradientAnimation 3s ease-in-out infinite; /* Appliquer l'animation */
 }
 
 .container {
