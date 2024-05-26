@@ -7,12 +7,6 @@ const workingHours = document.querySelector(".working-hours");
 const result = document.querySelector(".result");
 const comment = document.querySelector(".comment");
 
-hoursForm.addEventListener("submit", function (event) {
-  event.preventDefault();
-  calculateTotalWorkingHours();
-  getExtraHoursinMinutes();
-});
-
 /**
  * Fonction qui calcule le temps de travail total en heures.
  */
@@ -68,53 +62,20 @@ function getExtraHoursinMinutes(event) {
   const differenceInMinutes = actualEndTimeInMinutes - endTimeInMinutes;
   // on affiche le résultat
   result.textContent = `T'as fait ${differenceInMinutes} minutes d'heures supplémentaires. /  残業${differenceInMinutes}分  `;
-  // si la différence est négative, on affiche un message d'erreur
 
   setTimeout(() => {
     if (differenceInMinutes < 0) {
       comment.textContent = `Tu te fous de moi ?! / ふざけんな！  `;
     } else if (differenceInMinutes <= 30) {
-      // si la différence est inférieure ou égale à 30 minutes, on affiche un message de chance
-
       comment.textContent = `T'as eu de la chance ! / ラッキーじゃないか！`;
     } else if (differenceInMinutes <= 60) {
-      // si la différence est inférieure ou égale à 1 heure, on affiche un message de routine
-
       comment.textContent = `Comme d'habitude hein? /  相変わらずだね `;
     } else if (differenceInMinutes <= 90) {
-      // si la différence est inférieure ou égale à 1 heure et demi, on affiche un message de fatigue
-
       comment.textContent = `Faudrait p'tet lever le pied ! /  やりすぎじゃない？ `;
     } else if (differenceInMinutes <= 120) {
-      // si la différence est inférieure ou égale à 2 heures, on affiche un message de suffisance
-
       comment.textContent = `Bon ça suffit maintenant ! / いい加減にしろ！ `;
     } else {
-      // sinon, on affiche un message d'exasperation
-
       comment.textContent = `Mais merde! Va dormir!! /  はやく寝ろ！クソバカやろう！！ `;
     }
   }, 2000);
 }
-
-
-// Á analyser
-// function calculateTotalWorkingHours() {
-//   return new Promise((resolve, reject) => {
-//     // Logique de la fonction
-//     resolve();
-//   });
-// }
-
-// function handleFormSubmit(event) {
-//   event.preventDefault();
-//   calculateTotalWorkingHours()
-//     .then(() => {
-//       getExtraHoursinMinutes();
-//     })
-//     .catch(error => {
-//       console.error("Une erreur est survenue", error);
-//     });
-// }
-
-// hoursForm.addEventListener("submit", handleFormSubmit);
