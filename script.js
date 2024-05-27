@@ -7,6 +7,9 @@ const workingHours = document.querySelector(".working-hours");
 const result = document.querySelector(".result");
 const comment = document.querySelector(".comment");
 
+hoursForm.addEventListener("submit", calculateTotalWorkingHours);
+hoursForm.addEventListener("submit", getExtraHoursinMinutes);
+
 /**
  * Fonction qui calcule le temps de travail total en heures.
  */
