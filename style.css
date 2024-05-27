@@ -23,7 +23,7 @@ body {
 }
 
 .container {
-  max-width: 450px;
+  max-width: 480px;
   margin: 20px auto;
   padding: 0 15px;
 }
@@ -113,11 +113,17 @@ input:focus {
   outline: 1px solid #2222224f;
 }
 
+.working-hours,
 .result,
 .comment {
   font-size: 20px;
   margin-top: 10px;
   text-align: center;
+}
+
+.comment {
+  color: crimson;
+  font-weight: 900;
 }
 
 @media (min-width: 320px) and (max-width: 480px) {
