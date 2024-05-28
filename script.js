@@ -1,5 +1,8 @@
+const startingDate = document.getElementById("starting-date");
 const startingTime = document.getElementById("starting-time");
+const endingDate = document.getElementById("ending-date");
 const endingTime = document.getElementById("ending-time");
+const actualEndingDate = document.getElementById("actual-ending-date");
 const actualEndingTime = document.getElementById("actual-ending-time");
 const hoursForm = document.getElementById("hours-form");
 const submitBtn = document.querySelector("button");
@@ -16,22 +19,36 @@ hoursForm.addEventListener("submit", getExtraHoursinMinutes);
 function calculateTotalWorkingHours() {
   console.log("calculateTotalWorkingHours");
   // on récupère le temps de début de travail
-  const startTime = startingTime.value;
-  // on récupère le temps de fin de travail réel
-  const actualEndTime = actualEndingTime.value;
-  // on convertit le temps de début de travail en minutes
-  const startTimeInMinutes = convertToMinutes(startTime);
-  // on convertit le temps de fin de travail réel en minutes
-  const actualEndTimeInMinutes = convertToMinutes(actualEndTime);
-  // on calcule la durée totale de travail en minutes
-  const totalWorkingMinutes = actualEndTimeInMinutes - startTimeInMinutes;
-  // on convertit les minutes en heures
-  const totalWorkingHours = totalWorkingMinutes / 60;
-  // on affiche le résultat dans l'élément HTML approprié
+  const startDate = startingDate.value;
+  const startTime = startingTime.value; // Déplacé avant son utilisation
 
+  // on récupère le temps de fin de travail réel
+  const endDate = endingDate.value;
+  const actualEndTime = endingTime.value; // Déplacé avant son utilisation
+
+  // on convertit les dates et les temps en objets Date
+  const startDateTime = new Date(`${startDate}T${startTime}`);
+  const endDateTime = new Date(`${endDate}T${actualEndTime}`);
+
+  // on calcule la durée totale de travail en millisecondes
+  const totalWorkingMilliseconds = endDateTime - startDateTime;
+
+  // on vérifie si la date de début est postérieure à la date de fin
+  if (startDateTime > endDateTime) {
+    workingHours.textContent =
+      "C'est impossible désolé / 残念だけど、それは無理だ";
+    return; // Ajout d'un return pour arrêter l'exécution en cas d'erreur
+  }
+
+  // on convertit les millisecondes en heures
+  const totalWorkingHours = totalWorkingMilliseconds / 1000 / 60 / 60;
+
+  // on affiche le résultat dans l'élément HTML approprié
   workingHours.textContent = `Tu as travaillé ${totalWorkingHours.toFixed(
     2
-  )} heures aujourd'hui.`;
+  )} heures aujourd'hui. / 今日の仕事時間は${totalWorkingHours.toFixed(
+    2
+  )}時間です`;
 }
 
 /**
@@ -51,21 +68,29 @@ function convertToMinutes(time) {
 }
 
 function getExtraHoursinMinutes(event) {
-  // on empêche le comportement par défaut du formulaire
   event.preventDefault();
-  // on récupère le temps de fin de travail attendu
   const endTime = endingTime.value;
-  // on récupère le temps de fin de travail réel
-  const actualEndTime = actualEndingTime.value;
-  // on convertit le temps de fin de travail attendu en minutes
-  const endTimeInMinutes = convertToMinutes(endTime);
-  // on convertit le temps de fin de travail réel en minutes
-  const actualEndTimeInMinutes = convertToMinutes(actualEndTime);
-  // on calcule la différence entre les deux
-  const differenceInMinutes = actualEndTimeInMinutes - endTimeInMinutes;
-  // on affiche le résultat
-  result.textContent = `T'as fait ${differenceInMinutes} minutes d'heures supplémentaires. /  残業${differenceInMinutes}分  `;
+  const actualEndDate = actualEndingDate.value;
+  const actualEndTime = actualEndingTime.value; // Utilisez la valeur de actualEndingTime
 
+  // Convertir endTime en minutes
+  const endTimeInMinutes = convertToMinutes(endTime);
+
+  // Créer un objet Date pour actualEndTime
+  const actualEndDateTime = new Date(`${actualEndDate}T${actualEndTime}`);
+  
+  // Convertir actualEndDateTime en minutes depuis minuit
+  const actualEndTimeInMinutes = actualEndDateTime.getHours() * 60 + actualEndDateTime.getMinutes();
+
+  const differenceInMinutes = actualEndTimeInMinutes - endTimeInMinutes;
+
+  if (differenceInMinutes < 0) {
+    result.textContent = `C'est impossible désolé / 残念だけど、それは無理だ`;
+  } else {
+    result.textContent = `T'as fait ${differenceInMinutes} minutes d'heures supplémentaires. /  残業${differenceInMinutes}分  `;
+  }
+
+  // Gestion des commentaires basée sur la différence de temps
   setTimeout(() => {
     if (differenceInMinutes < 0) {
       comment.textContent = `Tu te fous de moi ?! / ふざけんな！  `;
