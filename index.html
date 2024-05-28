@@ -14,13 +14,21 @@
         <h2>Fais-toi plaisir! / お楽しみ</h2>
 
         <form id="hours-form">
-          <label for="starting-time"">Début / 開始</label>
-          <input type="time" id="starting-time" required/>
+          <label for="starting-time">Début / 開始</label>
+          <label for="starting-date">Date et heures / 日付と時間</label>
+          <input type="date" id="starting-date" required />
+          <input type="time" id="starting-time" required />
           <label for="ending-time">Fin / 終了</label>
+          <label for="ending-date">Date et heures / 日付と時間</label>
+          <input type="date" id="ending-date" required />
           <input type="time" id="ending-time" required />
           <label for="actual-ending-time">Fin réelle / 実労働終了</label>
+          <label for="actual-ending-date">Date et heures / 日付と時間</label>
+          <input type="date" id="actual-ending-date" required />
           <input type="time" id="actual-ending-time" required />
-          <button type="submit">Alors? Combien de minutes? / 何分でしょう？</button>
+          <button type="submit">
+            Alors? Combien de temps aujourd'hui? / どれぐらいかな？
+          </button>
         </form>
         <p class="working-hours"></p>
         <p class="result"></p>
