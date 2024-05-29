@@ -71,7 +71,7 @@ function getExtraHoursinMinutes(event) {
   event.preventDefault();
   const endTime = endingTime.value;
   const actualEndDate = actualEndingDate.value;
-  const actualEndTime = actualEndingTime.value; // Utilisez la valeur de actualEndingTime
+  const actualEndTime = actualEndingTime.value;
 
   // Convertir endTime en minutes
   const endTimeInMinutes = convertToMinutes(endTime);
