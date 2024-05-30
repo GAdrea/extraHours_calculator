@@ -24,6 +24,7 @@ function calculateTotalWorkingHours() {
 
   // on récupère le temps de fin de travail réel
   const endDate = endingDate.value;
+  const actualEndDate = actualEndingDate.value;
   const actualEndTime = endingTime.value; // Déplacé avant son utilisation
 
   // on convertit les dates et les temps en objets Date
@@ -34,9 +35,8 @@ function calculateTotalWorkingHours() {
   const totalWorkingMilliseconds = endDateTime - startDateTime;
 
   // on vérifie si la date de début est postérieure à la date de fin
-  if (startDateTime > endDateTime) {
-    workingHours.textContent =
-      "C'est impossible désolé / 残念だけど、それは無理だ";
+  if (startDateTime > endDateTime || actualEndDate !== endDate) {
+    alert("C'est impossible désolé / 残念だけど、それは無理だ");
     return; // Ajout d'un return pour arrêter l'exécution en cas d'erreur
   }
 
@@ -78,9 +78,10 @@ function getExtraHoursinMinutes(event) {
 
   // Créer un objet Date pour actualEndTime
   const actualEndDateTime = new Date(`${actualEndDate}T${actualEndTime}`);
-  
+
   // Convertir actualEndDateTime en minutes depuis minuit
-  const actualEndTimeInMinutes = actualEndDateTime.getHours() * 60 + actualEndDateTime.getMinutes();
+  const actualEndTimeInMinutes =
+    actualEndDateTime.getHours() * 60 + actualEndDateTime.getMinutes();
 
   const differenceInMinutes = actualEndTimeInMinutes - endTimeInMinutes;
 
@@ -94,6 +95,8 @@ function getExtraHoursinMinutes(event) {
   setTimeout(() => {
     if (differenceInMinutes < 0) {
       comment.textContent = `Tu te fous de moi ?! / ふざけんな！  `;
+    } else if (differenceInMinutes === 0) {
+      comment.textContent = `T'es sorti à l'heure! Bravo! Mais pourquoi tu utilises ça alors?! / 定時良かったね！じゃ、なんでこのアプリを使ってるの？`;
     } else if (differenceInMinutes <= 30) {
       comment.textContent = `T'as eu de la chance ! / ラッキーじゃないか！`;
     } else if (differenceInMinutes <= 60) {
