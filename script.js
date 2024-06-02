@@ -20,12 +20,12 @@ function calculateTotalWorkingHours() {
   console.log("calculateTotalWorkingHours");
   // on récupère le temps de début de travail
   const startDate = startingDate.value;
-  const startTime = startingTime.value; // Déplacé avant son utilisation
+  const startTime = startingTime.value; 
 
   // on récupère le temps de fin de travail réel
   const endDate = endingDate.value;
   const actualEndDate = actualEndingDate.value;
-  const actualEndTime = endingTime.value; // Déplacé avant son utilisation
+  const actualEndTime = endingTime.value; 
 
   // on convertit les dates et les temps en objets Date
   const startDateTime = new Date(`${startDate}T${startTime}`);
