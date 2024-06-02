@@ -20,12 +20,12 @@ function calculateTotalWorkingHours() {
   console.log("calculateTotalWorkingHours");
   // on récupère le temps de début de travail
   const startDate = startingDate.value;
-  const startTime = startingTime.value; 
+  const startTime = startingTime.value;
 
   // on récupère le temps de fin de travail réel
   const endDate = endingDate.value;
   const actualEndDate = actualEndingDate.value;
-  const actualEndTime = endingTime.value; 
+  const actualEndTime = endingTime.value;
 
   // on convertit les dates et les temps en objets Date
   const startDateTime = new Date(`${startDate}T${startTime}`);
@@ -93,13 +93,9 @@ function getExtraHoursinMinutes(event) {
   if (differenceInMinutes < 0) {
     result.textContent = `C'est impossible désolé / 残念だけど、それは無理だ`;
   } else if (differenceInMinutes === 0) {
-    result.textContent = ``;
+    result.textContent = `T'es sorti à l'heure! Bravo! Mais pourquoi tu utilises ça alors?! / 定時良かったね！じゃ、なんでこのアプリを使ってるの？`;
   } else {
-    workingHours.textContent = `Tu as travaillé ${totalWorkingHours.toFixed(
-      2
-    )} heures aujourd'hui. / 今日の仕事時間は${totalWorkingHours.toFixed(
-      2
-    )}時間です`;
+    result.textContent = `T'as fait ${differenceInMinutes} minutes d'heures supplémentaires / 残業${differenceInMinutes}分`;
   }
 
   // Gestion des commentaires basée sur la différence de temps
