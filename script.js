@@ -44,11 +44,16 @@ function calculateTotalWorkingHours() {
   const totalWorkingHours = totalWorkingMilliseconds / 1000 / 60 / 60;
 
   // on affiche le résultat dans l'élément HTML approprié
-  workingHours.textContent = `Tu as travaillé ${totalWorkingHours.toFixed(
-    2
-  )} heures aujourd'hui. / 今日の仕事時間は${totalWorkingHours.toFixed(
-    2
-  )}時間です`;
+
+  if (totalWorkingHours <= 0) {
+    workingHours.textContent = `Mais t'as pas bossé!! Tu te fous de moi?! / 仕事してないじゃん！ふざけてんのか？！`;
+  } else {
+    workingHours.textContent = `Tu as travaillé ${totalWorkingHours.toFixed(
+      2
+    )} heures aujourd'hui. / 今日の仕事時間は${totalWorkingHours.toFixed(
+      2
+    )}時間です`;
+  }
 }
 
 /**
@@ -87,26 +92,32 @@ function getExtraHoursinMinutes(event) {
 
   if (differenceInMinutes < 0) {
     result.textContent = `C'est impossible désolé / 残念だけど、それは無理だ`;
+  } else if (differenceInMinutes === 0) {
+    result.textContent = ``;
   } else {
-    result.textContent = `T'as fait ${differenceInMinutes} minutes d'heures supplémentaires. /  残業${differenceInMinutes}分  `;
+    workingHours.textContent = `Tu as travaillé ${totalWorkingHours.toFixed(
+      2
+    )} heures aujourd'hui. / 今日の仕事時間は${totalWorkingHours.toFixed(
+      2
+    )}時間です`;
   }
 
   // Gestion des commentaires basée sur la différence de temps
   setTimeout(() => {
     if (differenceInMinutes < 0) {
-      comment.textContent = `Tu te fous de moi ?! / ふざけんな！  `;
+      comment.textContent = `Tu te fous de moi ?! / ふざけんな！`;
     } else if (differenceInMinutes === 0) {
       comment.textContent = `T'es sorti à l'heure! Bravo! Mais pourquoi tu utilises ça alors?! / 定時良かったね！じゃ、なんでこのアプリを使ってるの？`;
     } else if (differenceInMinutes <= 30) {
       comment.textContent = `T'as eu de la chance ! / ラッキーじゃないか！`;
     } else if (differenceInMinutes <= 60) {
-      comment.textContent = `Comme d'habitude hein? /  相変わらずだね `;
+      comment.textContent = `Comme d'habitude hein? / 相変わらずだね`;
     } else if (differenceInMinutes <= 90) {
-      comment.textContent = `Faudrait p'tet lever le pied ! /  やりすぎじゃない？ `;
+      comment.textContent = `Faudrait p'tet lever le pied ! / やりすぎじゃない？`;
     } else if (differenceInMinutes <= 120) {
-      comment.textContent = `Bon ça suffit maintenant ! / いい加減にしろ！ `;
+      comment.textContent = `Bon ça suffit maintenant ! / いい加減にしろ！`;
     } else {
-      comment.textContent = `Mais merde! Va dormir!! /  はやく寝ろ！クソバカやろう！！ `;
+      comment.textContent = `Mais merde! Va dormir!! / はやく寝ろ！クソバカやろう！！`;
     }
   }, 2000);
 }
