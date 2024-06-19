@@ -10,6 +10,11 @@ const workingHours = document.querySelector(".working-hours");
 const result = document.querySelector(".result");
 const comment = document.querySelector(".comment");
 
+// Constantes pour les messages
+const MSG_IMPOSSIBLE = "C'est impossible désolé / 残念だけど、それは無理だ";
+const MSG_NOT_WORKED =
+  "Mais t'as pas bossé!! Tu te fous de moi?! / 仕事してないじゃん！ふざけてんのか？！";
+
 hoursForm.addEventListener("submit", calculateTotalWorkingHours);
 hoursForm.addEventListener("submit", getExtraHoursinMinutes);
 
@@ -36,7 +41,7 @@ function calculateTotalWorkingHours() {
 
   // on vérifie si la date de début est postérieure à la date de fin
   if (startDateTime > endDateTime || actualEndDate !== endDate) {
-    alert("C'est impossible désolé / 残念だけど、それは無理だ");
+    alert(MSG_IMPOSSIBLE);
     return; // Ajout d'un return pour arrêter l'exécution en cas d'erreur
   }
 
@@ -46,7 +51,7 @@ function calculateTotalWorkingHours() {
   // on affiche le résultat dans l'élément HTML approprié
 
   if (totalWorkingHours <= 0) {
-    workingHours.textContent = `Mais t'as pas bossé!! Tu te fous de moi?! / 仕事してないじゃん！ふざけてんのか？！`;
+    workingHours.textContent = MSG_NOT_WORKED;
   } else {
     workingHours.textContent = `Tu as travaillé ${totalWorkingHours.toFixed(
       2
@@ -91,7 +96,7 @@ function getExtraHoursinMinutes(event) {
   const differenceInMinutes = actualEndTimeInMinutes - endTimeInMinutes;
 
   if (differenceInMinutes < 0) {
-    result.textContent = `C'est impossible désolé / 残念だけど、それは無理だ`;
+    result.textContent = MSG_IMPOSSIBLE;
   } else if (differenceInMinutes === 0) {
     result.textContent = `T'es sorti à l'heure! Bravo! Mais pourquoi tu utilises ça alors?! / 定時良かったね！じゃ、なんでこのアプリを使ってるの？`;
   } else {
