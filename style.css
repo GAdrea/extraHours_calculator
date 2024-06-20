@@ -66,6 +66,10 @@ label {
   text-align: center;
 }
 
+.hide {
+  display: none;
+}
+
 button {
   display: block;
   border-radius: 10px;
