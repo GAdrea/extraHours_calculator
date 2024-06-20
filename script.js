@@ -4,8 +4,7 @@ const endingDate = document.getElementById("ending-date");
 const endingTime = document.getElementById("ending-time");
 const actualEndingDate = document.getElementById("actual-ending-date");
 const actualEndingTime = document.getElementById("actual-ending-time");
-const hoursForm = document.getElementById("hours-form");
-const submitBtn = document.querySelector("button");
+const form = document.querySelector("form");
 const workingHours = document.querySelector(".working-hours");
 const result = document.querySelector(".result");
 const comment = document.querySelector(".comment");
@@ -15,8 +14,14 @@ const MSG_IMPOSSIBLE = "C'est impossible désolé / 残念だけど、それは�
 const MSG_NOT_WORKED =
   "Mais t'as pas bossé!! Tu te fous de moi?! / 仕事してないじゃん！ふざけてんのか？！";
 
-hoursForm.addEventListener("submit", calculateTotalWorkingHours);
-hoursForm.addEventListener("submit", getExtraHoursinMinutes);
+form.addEventListener("submit", handleForm);
+
+function handleForm(e) {
+  e.preventDefault();
+
+  calculateTotalWorkingHours();
+  getExtraHoursinMinutes();
+}
 
 /**
  * Fonction qui calcule le temps de travail total en heures.
@@ -78,7 +83,6 @@ function convertToMinutes(time) {
 }
 
 function getExtraHoursinMinutes(event) {
-  event.preventDefault();
   const endTime = endingTime.value;
   const actualEndDate = actualEndingDate.value;
   const actualEndTime = actualEndingTime.value;
@@ -108,7 +112,7 @@ function getExtraHoursinMinutes(event) {
     if (differenceInMinutes < 0) {
       comment.textContent = `Tu te fous de moi ?! / ふざけんな！`;
     } else if (differenceInMinutes === 0) {
-      comment.textContent = `T'es sorti à l'heure! Bravo! Mais pourquoi tu utilises ça alors?! / 定時良かったね！じゃ、なんでこのアプリを使ってるの？`;
+      comment.textContent = ``;
     } else if (differenceInMinutes <= 30) {
       comment.textContent = `T'as eu de la chance ! / ラッキーじゃないか！`;
     } else if (differenceInMinutes <= 60) {
