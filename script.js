@@ -10,7 +10,8 @@ const result = document.querySelector(".result");
 const comment = document.querySelector(".comment");
 
 // Constantes pour les messages
-const MSG_IMPOSSIBLE = "C'est impossible désolé / 残念だけど、それは無理だ";
+const MSG_IMPOSSIBLE =
+  "Veuillez entrer des données valides / 正しい情報を入力してください";
 const MSG_NOT_WORKED =
   "Mais t'as pas bossé!! Tu te fous de moi?! / 仕事してないじゃん！ふざけてんのか？！";
 
@@ -27,7 +28,6 @@ function handleForm(e) {
  * Fonction qui calcule le temps de travail total en heures.
  */
 function calculateTotalWorkingHours() {
-  console.log("calculateTotalWorkingHours");
   // on récupère le temps de début de travail
   const startDate = startingDate.value;
   const startTime = startingTime.value;
